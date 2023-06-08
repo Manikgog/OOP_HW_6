@@ -3,99 +3,29 @@
 #include <windows.h>
 #include <cstdlib>
 #include <ctime>
+#include "Fraction.h"
+#include "Complex.h"
 
 /*
+Задание 1.
 Создайте класс Дробь (или используйте уже ранее созданный вами). 
 Используя перегрузку операторов реализуйте
 для него арифметические операции для работы с дробями
 (операции +, -, *, /).
 */
-class Fraction {
-private:
-	int _numerator;
-	int _denominator;
-	int gcd(int a, int b) {
-		if (a < b) {
-			std::swap(a, b);
-		}
 
-		while (b) {
-			a %= b;
-			std::swap(a, b);
-		}
-
-		return a;
-	}
-public:
-	Fraction() : _numerator(0), _denominator(1)
-	{}
-
-	Fraction(int numerator, int denominator) : _numerator(numerator), _denominator(denominator)
-	{
-		int g = gcd(_numerator, _denominator);
-		_numerator /= g;
-		_denominator /= g;
-	}
-
-	void SetDenominator(int denominator) {
-		_denominator = denominator;
-	}
-
-
-	void SetNumerator(int numerator) {
-		_numerator = numerator;
-	}
-
-
-	void SetBoth(int numerator, int denominator) {
-		_denominator = denominator;
-		_numerator = numerator;
-	}
-
-	int GetDenominator() const {
-		return _denominator;
-	}
-
-	int GetNumerator() const {
-		return _numerator;
-	}
-
-	void Print() const {
-		std::cout << _numerator << "/" << _denominator;
-	}
-
-	Fraction operator*(const Fraction& f)
-	{
-		return Fraction(_numerator * f.GetNumerator(), _denominator * f.GetDenominator());;
-	}
-
-	Fraction operator/(const Fraction& f)
-	{
-		return Fraction(_numerator * f.GetDenominator(), _denominator * f.GetNumerator());
-	}
-
-	Fraction operator+(const Fraction& f)
-	{
-		int numerator, denominator;
-		denominator = _denominator * f.GetDenominator();
-		numerator = _numerator * f.GetDenominator() + _denominator * f.GetNumerator();
-		return Fraction(numerator, denominator);
-	}
-
-	Fraction operator-(const Fraction& f)
-	{
-		int numerator, denominator;
-		denominator = _denominator * f.GetDenominator();
-		numerator = _numerator * f.GetDenominator() - _denominator * f.GetNumerator();
-		return Fraction(numerator, denominator);
-	}
-	
-};
+/*
+Создайте класс Complex (комплексное число) или используйте 
+уже созданный вами класс.Создайте перегруженные
+операторыдля реализации арифметических операций для
+по работе с комплексными числами (операции +, -, *, /).
+*/
 
 int main() {
 	setlocale(LC_ALL, "Russian");
 	SetConsoleCP(1251); // установка кодовой страницы на ввод текста
-	srand(time(NULL));
+	
+	
 	// вычитание
 	Fraction f1(3, 5);
 	Fraction f2(1, 2);
@@ -134,7 +64,45 @@ int main() {
 	f3 = f1 / f2;
 	f3.Print();
 	std::cout << "\n\n";
+	
 
+	// сложение комплексных чисел
+	Complex c1(13, 1);
+	Complex c2(7, -6);
+	c1.Print();
+	std::cout << " + ";
+	c2.Print();
+	std::cout << " = ";
+	Complex c3 = c1 + c2;
+	c3.Print();
+	std::cout << "\n\n";
+
+	// вычитание комплексных чисел
+	c1.Print();
+	std::cout << " - ";
+	c2.Print();
+	std::cout << " = ";
+	c3 = c1 - c2;
+	c3.Print();
+	std::cout << "\n\n";
+
+	// умножение комплексных чисел
+	c1.Print();
+	std::cout << " * ";
+	c2.Print();
+	std::cout << " = ";
+	c3 = c1 * c2;
+	c3.Print();
+	std::cout << "\n\n";
+
+	// деление комплексных чисел
+	c1.Print();
+	std::cout << " / ";
+	c2.Print();
+	std::cout << " = ";
+	c3 = c1 / c2;
+	c3.Print();
+	std::cout << "\n\n";
 
 	return 0;
 }
