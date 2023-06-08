@@ -28,7 +28,7 @@ int main() {
 	
 	
 	// вычитание
-	Fraction f1(3, 5);
+	Fraction f1(6, 5);
 	Fraction f2(1, 2);
 	f1.Print();
 	std::cout << " - ";

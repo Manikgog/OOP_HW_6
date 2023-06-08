@@ -48,7 +48,12 @@ int Fraction::GetNumerator() const {
 }
 
 void Fraction::Print() const {
-	std::cout << _numerator << "/" << _denominator;
+	if (_numerator < _denominator)
+		std::cout << _numerator << "/" << _denominator;
+	else if (_numerator == _denominator)
+		std::cout << 1;
+	else
+		std::cout << _numerator / _denominator << "." << (_numerator % _denominator) << "/" << _denominator;
 }
 
 Fraction Fraction::operator*(const Fraction& f)
