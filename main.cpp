@@ -30,20 +30,33 @@ void loop()
 	{
 		std::cout << "Для выхода из программы введите \'q\': ";
 		std::cin >> choice;
+		if (choice == 'q' || choice == 'Q' || choice == 'й' || choice == 'Й')
+			break;
 		system("cls");
 		std::string first_fraction;
 		std::cout << "Введите первую дробь -> ";
 		std::cin.ignore();
 		std::getline(std::cin, first_fraction);
+		if (first_fraction == "q" || first_fraction == "Q" || first_fraction == "й" || first_fraction == "Q")
+			break;
 		std::string action;
+		bool flag_exit = false;
 		do {
 			std::cout << "Введите действие -> ";
 			std::getline(std::cin, action);
+			if (action == "q" || action == "Q" || action == "й" || action == "Q")
+			{
+				flag_exit = true;
+				break;
+			}
 		} while (action != "+" && action != "-" && action != "*" && action != "/");
-				
+		if (flag_exit)
+			break;
 		std::string second_fraction;
 		std::cout << "Введите вторую дробь -> ";
 		std::getline(std::cin, second_fraction);
+		if (second_fraction == "q" || second_fraction == "Q" || second_fraction == "й" || second_fraction == "Q")
+			break;
 
 		size_t pos = first_fraction.find('/', 0);
 		std::string numerator = first_fraction.substr(0, pos);
@@ -69,7 +82,7 @@ void loop()
 			f3 = f1 / f2;
 		f1.Print(); std::cout << ' ' << action << ' '; f2.Print(); std::cout << " = "; f3.Print(); std::cout << std::endl;
 		
-	} while (choice != 'q' && choice != 'Q');
+	} while (1);
 }
 
 
