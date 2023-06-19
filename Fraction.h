@@ -11,7 +11,7 @@ private:
 public:
 	Fraction();
 
-	Fraction(int numerator, int denominator);
+	explicit Fraction(int numerator, int denominator);
 
 	void SetDenominator(int denominator);
 
@@ -32,6 +32,14 @@ public:
 	Fraction operator+(const Fraction& f);
 
 	Fraction operator-(const Fraction& f);
+
+	Fraction operator++();
+
+	Fraction operator++(int);
+
+	Fraction operator--();
+
+	Fraction operator--(int);
 
 };
 

@@ -81,3 +81,23 @@ Fraction Fraction::operator-(const Fraction& f)
 	numerator = _numerator * f.GetDenominator() - _denominator * f.GetNumerator();
 	return Fraction(numerator, denominator);
 }
+
+Fraction operator++()
+{
+
+}
+
+Fraction operator++(int)
+{
+
+}
+
+Fraction operator--()
+{
+
+}
+
+Fraction operator--(int)
+{
+
+}
