@@ -82,22 +82,60 @@ Fraction Fraction::operator-(const Fraction& f)
 	return Fraction(numerator, denominator);
 }
 
-Fraction operator++()
+Fraction Fraction::operator+()
 {
-
+	return *this;
 }
 
-Fraction operator++(int)
+Fraction Fraction::operator-()
 {
-
+	_numerator = -_numerator;
+	return *this;
 }
 
-Fraction operator--()
+Fraction Fraction::operator++()
 {
-
+	_numerator += _denominator;
+	return *this;
 }
 
-Fraction operator--(int)
+Fraction Fraction::operator++(int)
 {
+	Fraction tmp{ _numerator, _denominator };
+	++(*this);
+	return tmp;
+}
 
+Fraction Fraction::operator--()
+{
+	_numerator -= _denominator;
+	return *this;
+}
+
+Fraction Fraction::operator--(int)
+{
+	Fraction tmp{ _numerator, _denominator };
+	--(*this);
+	return tmp;
+}
+
+std::ostream& operator<<(std::ostream& out, const Fraction& f)
+{
+	if (std::abs(f.GetNumerator()) < f.GetDenominator())
+		out << f.GetNumerator() << "/" << f.GetDenominator();
+	else if (std::abs(f.GetNumerator()) == f.GetDenominator())
+	{
+		if(f.GetNumerator() < 0)
+			out << -1;
+		else
+			out << 1;
+	}
+	else
+	{
+		if(f.GetNumerator() < 0)
+			out << "-" << (std::abs(f.GetNumerator()) / f.GetDenominator()) << "." << ((std::abs(f.GetNumerator()) % f.GetDenominator()) << "/" << f.GetDenominator();
+		else
+			out << f.GetNumerator() / f.GetDenominator() << "." << f.GetNumerator() % f.GetDenominator() << "/" << f.GetDenominator();
+	}
+	return out;
 }

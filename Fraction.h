@@ -33,6 +33,10 @@ public:
 
 	Fraction operator-(const Fraction& f);
 
+	Fraction operator+();
+
+	Fraction operator-();
+
 	Fraction operator++();
 
 	Fraction operator++(int);
@@ -40,6 +44,8 @@ public:
 	Fraction operator--();
 
 	Fraction operator--(int);
+
+	friend std::ostream& operator<<(std::ostream& out, const Fraction& f);
 
 };
 

@@ -44,7 +44,7 @@ void loop()
 		do {
 			std::cout << "Введите действие -> ";
 			std::getline(std::cin, action);
-			if (action == "q" || action == "Q" || action == "й" || action == "Q")
+			if (action == "q" || action == "Q" || action == "й" || action == "Й")
 			{
 				flag_exit = true;
 				break;
@@ -55,7 +55,7 @@ void loop()
 		std::string second_fraction;
 		std::cout << "Введите вторую дробь -> ";
 		std::getline(std::cin, second_fraction);
-		if (second_fraction == "q" || second_fraction == "Q" || second_fraction == "й" || second_fraction == "Q")
+		if (second_fraction == "q" || second_fraction == "Q" || second_fraction == "й" || second_fraction == "Й")
 			break;
 
 		size_t pos = first_fraction.find('/', 0);
@@ -78,7 +78,7 @@ void loop()
 			f3 = f1 - f2;
 		else if(action == "*")
 			f3 = f1 * f2;
-		else
+		else if(action == "/")
 			f3 = f1 / f2;
 		f1.Print(); std::cout << ' ' << action << ' '; f2.Print(); std::cout << " = "; f3.Print(); std::cout << std::endl;
 		
@@ -130,8 +130,31 @@ int main() {
 	f3 = f1 / f2;
 	f3.Print();
 	std::cout << "\n\n";
-	
+	*/
 
+	/*Fraction f4{ 3, 2 };
+	std::cout << "Постфиксный минус:\n";
+	std::cout << f4 << std::endl;
+	f4--;
+	std::cout << f4 << std::endl;
+	std::cout << "Префиксный минус:\n";
+	--f4;
+	std::cout << f4 << std::endl;
+	std::cout << "Постфиксный плюс:\n";
+	f4++;
+	std::cout << f4 << std::endl;
+	std::cout << "Префиксный плюс:\n";
+	++f4;
+	std::cout << f4 << std::endl;*/
+
+	Fraction f5{ 5, 4 };
+	std::cout << f5 << std::endl;
+	-f5;
+	std::cout << f5 << std::endl;
+	-f5;
+	std::cout << f5 << std::endl;
+
+	/*
 	// сложение комплексных чисел
 	Complex c1(13, 1);
 	Complex c2(7, -6);
@@ -171,7 +194,7 @@ int main() {
 	std::cout << "\n\n";
 	*/
 
-	loop();
+	//loop();
 
 	return 0;
 }
